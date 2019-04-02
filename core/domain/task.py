@@ -1,4 +1,4 @@
-import datetime
+from datetime import date
 from dataclasses import dataclass
 from typing import List
 
@@ -8,6 +8,6 @@ class Task:
     task_id: int
     subject: str
     detail: str
-    deadline: datetime
+    deadline: date
     tag: List[str]
 

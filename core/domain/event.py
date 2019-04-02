@@ -1,4 +1,4 @@
-import datetime
+from datetime import date
 from dataclasses import dataclass
 
 
@@ -6,5 +6,5 @@ from dataclasses import dataclass
 class Event:
     event_id: int
     name: str
-    date: datetime
+    date: date
     tag: list

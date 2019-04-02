@@ -1,4 +1,4 @@
-import datetime
+from datetime import date
 from dataclasses import dataclass
 from typing import List
 from domain.timetablechange import TimeTableChange
@@ -6,6 +6,6 @@ from domain.timetablechange import TimeTableChange
 
 @dataclass
 class TimeTable:
-    date: datetime
+    date: date
     subjects: List[str]
     change: List[TimeTableChange]
