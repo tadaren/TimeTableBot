@@ -1,8 +1,8 @@
 from pymongo import MongoClient
-from config import db_url
+from config import DB_URL
 
 
-client = MongoClient(db_url)
+client = MongoClient(DB_URL)
 
 
 def get_db(db_name: str):
