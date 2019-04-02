@@ -1,7 +1,7 @@
 import datetime
 from dataclasses import dataclass
 from typing import List
-from core.domain import TimeTableChange
+from domain.timetablechange import TimeTableChange
 
 
 @dataclass
