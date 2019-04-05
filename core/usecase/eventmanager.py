@@ -1,22 +1,24 @@
-def get_by_id(id):
-    pass
+from repository.eventrepository import EventRepository
 
 
-def get_by_day(first_day, last_day):
-    pass
+class EventManager:
+    def __init__(self):
+        self.repository = EventRepository()
 
+    def get_by_id(self, event_id):
+        pass
 
-def get_by_tag(tag):
-    pass
+    def get_by_day(self, first_day, last_day):
+        pass
 
+    def get_by_tag(self, tag):
+        pass
 
-def update(id, name, date, tag):
-    pass
+    def update(self, event_id, name, date, tag):
+        pass
 
+    def delete(self, event_id):
+        pass
 
-def delete(id):
-    pass
-
-
-def add(subject, deteil, deadline, tag):
-    pass
+    def add(self, subject, detail, deadline, tag):
+        pass
