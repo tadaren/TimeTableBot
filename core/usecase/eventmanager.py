@@ -1,9 +1,6 @@
-from repository.eventrepository import EventRepository
-
-
 class EventManager:
-    def __init__(self):
-        self.repository = EventRepository()
+    def __init__(self, repository):
+        self.repository = repository
 
     def get_by_id(self, event_id):
         pass
