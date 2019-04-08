@@ -1,5 +1,6 @@
 import datetime
 from typing import List
+from domain.event import Event
 
 
 class EventManager:
@@ -38,5 +39,5 @@ class EventManager:
     def delete(self, event_id):
         pass
 
-    def add(self, subject, detail, deadline, tag):
-        pass
+    def add(self, name: str, date: datetime.date, tag: List[str]):
+        self.repository.insert(Event(0, name, date, tag))
