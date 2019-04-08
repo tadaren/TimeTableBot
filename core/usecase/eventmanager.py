@@ -1,4 +1,5 @@
 import datetime
+from typing import List
 
 
 class EventManager:
@@ -21,8 +22,15 @@ class EventManager:
         )
         return ret
 
-    def get_by_tag(self, tag):
-        pass
+    def get_by_tags(self, tag: List[str]):
+        ret = self.repository.find(
+            {
+                'tag': {
+                    '$all': tag
+                }
+            }
+        )
+        return ret
 
     def update(self, event_id, name, date, tag):
         pass
