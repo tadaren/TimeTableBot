@@ -1,9 +1,13 @@
+import datetime
+
+
 class EventManager:
     def __init__(self, repository):
         self.repository = repository
 
     def get_by_id(self, event_id):
-        pass
+        ret = self.repository.find({'event_id': event_id})
+        return ret
 
     def get_by_day(self, first_day, last_day):
         pass
