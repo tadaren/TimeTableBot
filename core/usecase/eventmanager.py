@@ -37,7 +37,7 @@ class EventManager:
         pass
 
     def delete(self, event_id):
-        pass
+        self.repository.delete({'event_id': event_id})
 
     def add(self, name: str, date: datetime.date, tag: List[str]):
         self.repository.insert(Event(0, name, date, tag))
