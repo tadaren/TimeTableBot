@@ -9,8 +9,17 @@ class EventManager:
         ret = self.repository.find({'event_id': event_id})
         return ret
 
-    def get_by_day(self, first_day, last_day):
-        pass
+    def get_by_day(self, first_day: datetime.date, last_day: datetime.date):
+        ret = self.repository.find(
+            {
+                'date':
+                {
+                    '$gte': first_day.isoformat(),
+                    '$lte': last_day.isoformat()
+                }
+            }
+        )
+        return ret
 
     def get_by_tag(self, tag):
         pass
