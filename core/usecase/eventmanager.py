@@ -33,6 +33,17 @@ class EventManager:
         )
         return ret
 
+    def get(self, first_day: datetime.date = None, last_day: datetime.date = None, tags: List[str] = []):
+        query = {}
+        date_query = build_date_query(first_day, last_day)
+        if date_query:
+            query['date'] = date_query
+        if tags:
+            query.update({'tag': {'$all': tags}})
+
+        ret = self.repository.find(query)
+        return ret
+
     def update(self, event_id, name, date, tag):
         self.repository.update({'event_id': event_id}, Event(event_id, name, date, tag))
 
@@ -41,3 +52,13 @@ class EventManager:
 
     def add(self, name: str, date: datetime.date, tag: List[str]):
         self.repository.insert(Event(0, name, date, tag))
+
+
+def build_date_query(first_day: datetime.date = None, last_day: datetime.date = None):
+    query = {}
+    if first_day is not None:
+        query.update({'$gte': first_day.isoformat()})
+    if last_day is not None:
+        query.update({'$lte': last_day.isoformat()})
+
+    return query
