@@ -34,7 +34,7 @@ class EventManager:
         return ret
 
     def update(self, event_id, name, date, tag):
-        pass
+        self.repository.update({'event_id': event_id}, Event(event_id, name, date, tag))
 
     def delete(self, event_id):
         self.repository.delete({'event_id': event_id})
