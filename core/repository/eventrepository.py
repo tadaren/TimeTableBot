@@ -12,13 +12,13 @@ class EventRepository:
 
     def insert(self, event: Event):
         event_collection = self._db[self._collection_name]
-        event_dict = event_to_dict(event)
+        event_dict = event2dict(event)
         event_collection.insert_one(event_dict)
 
     def find(self, key):
         event_collection = self._db[self._collection_name]
         res = event_collection.find(key)
-        event_list = [dict_to_event(e) for e in res]
+        event_list = [dict2event(e) for e in res]
         return event_list
 
     def delete(self, key):
@@ -27,10 +27,10 @@ class EventRepository:
 
     def update(self, key, event: Event):
         event_collection = self._db[self._collection_name]
-        event_collection.update_one(key, event_to_dict(event))
+        event_collection.update_one(key, event2dict(event))
 
 
-def event_to_dict(event: Event):
+def event2dict(event: Event):
     if event.event_id:
         return {
             '_id': bson.ObjectId(event.event_id),
@@ -46,5 +46,5 @@ def event_to_dict(event: Event):
         }
 
 
-def dict_to_event(obj):
+def dict2event(obj):
     return Event(str(obj['_id']), obj['name'], obj['date'], obj['tag'])
