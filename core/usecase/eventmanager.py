@@ -1,5 +1,8 @@
 import datetime
 from typing import List
+
+import bson
+
 from domain.event import Event
 
 
@@ -45,13 +48,13 @@ class EventManager:
         return ret
 
     def update(self, event_id, name, date, tag):
-        self.repository.update({'event_id': event_id}, Event(event_id, name, date, tag))
+        self.repository.update({'_id': bson.ObjectId(event_id)}, Event(event_id, name, date, tag))
 
     def delete(self, event_id):
         self.repository.delete({'event_id': event_id})
 
     def add(self, name: str, date: datetime.date, tag: List[str]):
-        self.repository.insert(Event(0, name, date, tag))
+        self.repository.insert(Event('', name, date, tag))
 
 
 def build_date_query(first_day: datetime.date = None, last_day: datetime.date = None):
