@@ -5,7 +5,7 @@ from typing import List
 
 @dataclass
 class TimeTableChange:
-    time_table_change_id: int
+    time_table_change_id: str
     date: date
     period: int
     subject: str
