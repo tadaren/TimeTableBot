@@ -1,3 +1,5 @@
+import datetime
+
 import bson
 from pymongo.collection import Collection
 
@@ -47,4 +49,4 @@ def event2dict(event: Event):
 
 
 def dict2event(obj):
-    return Event(str(obj['_id']), obj['name'], obj['date'], obj['tag'])
+    return Event(str(obj['_id']), obj['name'], datetime.date.fromisoformat(obj['date']), obj['tag'])
