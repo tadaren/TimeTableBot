@@ -1,9 +1,9 @@
 import datetime
 from typing import List
-
 import bson
 
 from domain.event import Event
+from util import build_date_query
 
 
 class EventManager:
@@ -55,13 +55,3 @@ class EventManager:
 
     def add(self, name: str, date: datetime.date, tag: List[str]):
         self.repository.insert(Event('', name, date, tag))
-
-
-def build_date_query(first_day: datetime.date = None, last_day: datetime.date = None):
-    query = {}
-    if first_day is not None:
-        query.update({'$gte': first_day.isoformat()})
-    if last_day is not None:
-        query.update({'$lte': last_day.isoformat()})
-
-    return query
