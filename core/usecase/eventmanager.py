@@ -11,7 +11,7 @@ class EventManager:
         self.repository = repository
 
     def get_by_id(self, event_id):
-        ret = self.repository.find({'event_id': event_id})
+        ret = self.repository.find({'_id': bson.ObjectId(event_id)})
         return ret
 
     def get_by_day(self, first_day: datetime.date, last_day: datetime.date):
@@ -51,7 +51,7 @@ class EventManager:
         self.repository.update({'_id': bson.ObjectId(event_id)}, Event(event_id, name, date, tag))
 
     def delete(self, event_id):
-        self.repository.delete({'event_id': event_id})
+        self.repository.delete({'_id': bson.ObjectId(event_id)})
 
     def add(self, name: str, date: datetime.date, tag: List[str]):
         self.repository.insert(Event('', name, date, tag))
