@@ -13,6 +13,7 @@ class TimeTableManager:
         timetable = self.tt_repository.find({'date': date.isoformat()})
         timetable_change = self.ttc_repository.find({'date': date.isoformat()})
         timetable.change = timetable_change
+        return timetable
 
     def add(self, date: datetime.date, period: int, subject: str, tags: List[str]):
         self.ttc_repository.insert(TimeTableChange('', date, period, subject, tags))
