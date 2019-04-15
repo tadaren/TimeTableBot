@@ -20,11 +20,11 @@ class TaskManager:
         ret = self.repository.find(query)
         return ret
 
-    def update(self, task_id, subject, detail, deadline, tag):
-        self.repository.update({'_id': bson.ObjectId(task_id)}, Task(task_id, subject, detail, deadline, tag))
+    def update(self, task_id, subject, detail, deadline, tags):
+        self.repository.update({'_id': bson.ObjectId(task_id)}, Task(task_id, subject, detail, deadline, tags))
 
     def delete(self, task_id):
         self.repository.delete({'_id': bson.ObjectId(task_id)})
 
-    def add(self, subject, detail, deadline, tag):
-        self.repository.insert(Task('', subject, detail, deadline, tag))
+    def add(self, subject, detail, deadline, tags):
+        self.repository.insert(Task('', subject, detail, deadline, tags))

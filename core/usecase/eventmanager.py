@@ -47,11 +47,11 @@ class EventManager:
         ret = self.repository.find(query)
         return ret
 
-    def update(self, event_id, name, date, tag):
-        self.repository.update({'_id': bson.ObjectId(event_id)}, Event(event_id, name, date, tag))
+    def update(self, event_id, name, date, tags):
+        self.repository.update({'_id': bson.ObjectId(event_id)}, Event(event_id, name, date, tags))
 
     def delete(self, event_id):
         self.repository.delete({'_id': bson.ObjectId(event_id)})
 
-    def add(self, name: str, date: datetime.date, tag: List[str]):
-        self.repository.insert(Event('', name, date, tag))
+    def add(self, name: str, date: datetime.date, tags: List[str]):
+        self.repository.insert(Event('', name, date, tags))
