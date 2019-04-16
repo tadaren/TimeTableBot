@@ -9,5 +9,5 @@ class Task:
     subject: str
     detail: str
     deadline: date
-    tag: List[str]
+    tags: List[str]
 

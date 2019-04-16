@@ -9,4 +9,4 @@ class TimeTableChange:
     date: date
     period: int
     subject: str
-    tag: List[str]
+    tags: List[str]

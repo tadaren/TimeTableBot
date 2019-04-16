@@ -16,7 +16,7 @@ class TaskManager:
         if date_query:
             query['date'] = date_query
         if tags:
-            query['tag'] = {'$all': tags}
+            query['tags'] = {'$all': tags}
         ret = self.repository.find(query)
         return ret
 
