@@ -3,6 +3,7 @@ import datetime
 
 import config
 from db import get_db
+from domain.timetable import timetable2dict
 from repository.eventrepository import EventRepository
 from repository.taskrepository import TaskRepository
 from repository.timetablechangerepository import TimeTableChangeRepository
@@ -30,6 +31,9 @@ def timetable_get():
     timetable = timetable_manager.get(date)
 
     response.headers['Content-Type'] = 'application/json'
-    return timetable.__dict__
+    if timetable is None:
+        return {}
+    return timetable2dict(timetable)
+
 
 run(host='0.0.0.0', port=80, debug=True, reloader=True)

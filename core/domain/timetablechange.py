@@ -10,3 +10,13 @@ class TimeTableChange:
     period: int
     subject: str
     tag: List[str]
+
+
+def timetable_change2dict(timetable_change: TimeTableChange):
+    return {
+        'id': timetable_change.time_table_change_id,
+        'date': timetable_change.date.isoformat(),
+        'period': timetable_change.period,
+        'subject': timetable_change.subject,
+        'tag': timetable_change.tag
+    }
