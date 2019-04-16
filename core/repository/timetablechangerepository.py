@@ -47,4 +47,4 @@ def change2dict(time_table_change: TimeTableChange):
 
 
 def dict2change(obj):
-    TimeTableChange(obj['_id'], datetime.date.fromisoformat(obj['date']), obj['period'], obj['subject'], obj['tags'])
+    return TimeTableChange(obj['_id'], datetime.date.fromisoformat(obj['date']), obj['period'], obj['subject'], obj['tags'])
