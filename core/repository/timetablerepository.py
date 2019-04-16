@@ -13,4 +13,4 @@ class TimeTableRepository:
     def find(self, key):
         tt_collection = self._db[self._collection_name]  # type: Collection
         res = tt_collection.find(key)
-        return [TimeTable(datetime.date.fromisoformat(e['date']), e['subjects'], []) for e in res]
+        return [TimeTable(None, e['subjects'], []) for e in res]
