@@ -30,21 +30,21 @@ class TimeTableChangeRepository:
 
 
 def change2dict(time_table_change: TimeTableChange):
-    if time_table_change:
+    if time_table_change.time_table_change_id:
         return {
             '_id': time_table_change.time_table_change_id,
             'date': time_table_change.date.isoformat(),
             'period': time_table_change.period,
             'subject': time_table_change.subject,
-            'tag': time_table_change.tag
+            'tags': time_table_change.tags
         }
     return {
         'date': time_table_change.date.isoformat(),
         'period': time_table_change.period,
         'subject': time_table_change.subject,
-        'tag': time_table_change.tag
+        'tags': time_table_change.tags
     }
 
 
 def dict2change(obj):
-    TimeTableChange(obj['_id'], datetime.date.fromisoformat(obj['date']), obj['period'], obj['subject'], obj['tag'])
+    TimeTableChange(obj['_id'], datetime.date.fromisoformat(obj['date']), obj['period'], obj['subject'], obj['tags'])

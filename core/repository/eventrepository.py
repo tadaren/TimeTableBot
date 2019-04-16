@@ -38,15 +38,15 @@ def event2dict(event: Event):
             '_id': bson.ObjectId(event.event_id),
             'name': event.name,
             'date': event.date.isoformat(),
-            'tag': event.tag
+            'tags': event.tags
         }
 
     return {
             'name': event.name,
             'date': event.date.isoformat(),
-            'tag': event.tag
+            'tags': event.tags
         }
 
 
 def dict2event(obj):
-    return Event(str(obj['_id']), obj['name'], datetime.date.fromisoformat(obj['date']), obj['tag'])
+    return Event(str(obj['_id']), obj['name'], datetime.date.fromisoformat(obj['date']), obj['tags'])

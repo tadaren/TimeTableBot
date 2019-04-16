@@ -26,11 +26,11 @@ class EventManager:
         )
         return ret
 
-    def get_by_tags(self, tag: List[str]):
+    def get_by_tags(self, tags: List[str]):
         ret = self.repository.find(
             {
-                'tag': {
-                    '$all': tag
+                'tags': {
+                    '$all': tags
                 }
             }
         )
@@ -42,7 +42,7 @@ class EventManager:
         if date_query:
             query['date'] = date_query
         if tags:
-            query.update({'tag': {'$all': tags}})
+            query.update({'tags': {'$all': tags}})
 
         ret = self.repository.find(query)
         return ret

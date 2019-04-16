@@ -7,4 +7,4 @@ class Event:
     event_id: str
     name: str
     date: date
-    tag: list
+    tags: list

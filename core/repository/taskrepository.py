@@ -38,13 +38,13 @@ def task2dict(task: Task):
             'subject': task.subject,
             'detail': task.detail,
             'deadline': task.deadline.isoformat(),
-            'tag': task.tag
+            'tags': task.tags
         }
     return {
         'subject': task.subject,
         'detail': task.detail,
         'deadline': task.deadline.isoformat(),
-        'tag': task.tag
+        'tags': task.tags
     }
 
 
@@ -54,5 +54,5 @@ def dict2task(obj):
         obj['subject'],
         obj['detail'],
         datetime.date.fromisoformat(obj['deadline']),
-        obj['tag']
+        obj['tags']
     )

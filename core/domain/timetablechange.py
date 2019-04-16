@@ -9,7 +9,7 @@ class TimeTableChange:
     date: date
     period: int
     subject: str
-    tag: List[str]
+    tags: List[str]
 
 
 def timetable_change2dict(timetable_change: TimeTableChange):
@@ -18,5 +18,5 @@ def timetable_change2dict(timetable_change: TimeTableChange):
         'date': timetable_change.date.isoformat(),
         'period': timetable_change.period,
         'subject': timetable_change.subject,
-        'tag': timetable_change.tag
+        'tags': timetable_change.tags
     }
