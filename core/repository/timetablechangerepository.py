@@ -30,7 +30,7 @@ class TimeTableChangeRepository:
 
 
 def change2dict(time_table_change: TimeTableChange):
-    if time_table_change:
+    if time_table_change.time_table_change_id:
         return {
             '_id': time_table_change.time_table_change_id,
             'date': time_table_change.date.isoformat(),
