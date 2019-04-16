@@ -11,6 +11,10 @@ class TimeTableManager:
 
     def get(self, date: datetime.date):
         timetable = self.tt_repository.find({'date': date.isoformat()})
+        if not timetable:
+            return None
+
+        timetable = timetable[0]
         timetable_change = self.ttc_repository.find({'date': date.isoformat()})
         timetable.change = timetable_change
         return timetable
