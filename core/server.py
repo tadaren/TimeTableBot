@@ -12,7 +12,6 @@ from usecase.eventmanager import EventManager
 from usecase.taskmanager import TaskManager
 from usecase.timetablemanager import TimeTableManager
 
-
 db = get_db('TimeTableBot')
 
 timetable_repository = TimeTableRepository(db, config.TIMETABLE_COLLECTION_NAME)
@@ -34,6 +33,17 @@ def timetable_get():
     if timetable is None:
         return {}
     return timetable2dict(timetable)
+
+
+@post('/timetable/change')
+def timetable_change():
+    request_json = request.json
+    timetable_manager.add(
+        datetime.date.fromisoformat(request_json['date']),
+        request_json['period'],
+        request_json['subject'],
+        request_json['tags']
+    )
 
 
 run(host='0.0.0.0', port=80, debug=True, reloader=True)
