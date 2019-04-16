@@ -10,7 +10,12 @@ class TimeTableManager:
         self.ttc_repository = timetable_change_repository
 
     def get(self, date: datetime.date):
-        timetable = self.tt_repository.find({'date': date.isoformat()})
+        timetable = self.tt_repository.find({'weekday': date.weekday()})
+        if not timetable:
+            return None
+
+        timetable = timetable[0]
+        timetable.date = date
         timetable_change = self.ttc_repository.find({'date': date.isoformat()})
         timetable.change = timetable_change
         return timetable
