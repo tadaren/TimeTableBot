@@ -3,6 +3,7 @@ import datetime
 
 import config
 from db import get_db
+from domain.task import task2dict
 from domain.timetable import timetable2dict
 from repository.eventrepository import EventRepository
 from repository.taskrepository import TaskRepository
@@ -62,6 +63,17 @@ def task_get():
     if not tasks:
         return {}
     return {'response': [task2dict(task) for task in tasks]}
+
+
+@post('/task/add')
+def add_task():
+    request_json = request.json
+    task_manager.add(
+        request_json['subject'],
+        request_json['detail'],
+        datetime.date.fromisoformat(request_json['deadline']),
+        request_json['tags']
+    )
 
 
 run(host='0.0.0.0', port=80, debug=True, reloader=True)
