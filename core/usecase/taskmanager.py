@@ -14,7 +14,7 @@ class TaskManager:
         query = {}
         date_query = build_date_query(first_day, last_day)
         if date_query:
-            query['date'] = date_query
+            query['deadline'] = date_query
         if tags:
             query['tags'] = {'$all': tags}
         ret = self.repository.find(query)
