@@ -46,4 +46,22 @@ def timetable_change():
     )
 
 
+@get('/task/get')
+def task_get():
+    first_day = request.query.get('first_day')
+    last_day = request.query.get('last_day')
+    tags = request.query.getall('tags')
+    if first_day is not None:
+        first_day = datetime.date.fromisoformat(first_day)
+    if last_day is not None:
+        last_day = datetime.date.fromisoformat(last_day)
+
+    tasks = task_manager.get(first_day, last_day, tags)
+
+    response.headers['Content-Type'] = 'application/json'
+    if not tasks:
+        return {}
+    return {'response': [task2dict(task) for task in tasks]}
+
+
 run(host='0.0.0.0', port=80, debug=True, reloader=True)

@@ -11,3 +11,12 @@ class Task:
     deadline: date
     tags: List[str]
 
+
+def task2dict(task: Task):
+    return {
+        'id': str(task.task_id),
+        'subject': task.subject,
+        'detail': task.detail,
+        'deadline': task.deadline.isoformat(),
+        'tags': task.tags
+    }
