@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  bot_db:
+    image: mongo
+    expose:
+      - "27017"
+
+  api:
+    build: ./core
+    environment:
+      DB_URL: 'mongodb://bot_db:27017'
+    ports:
+      - "80:8000"
+    depends_on:
+      - bot_db
