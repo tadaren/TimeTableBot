@@ -9,17 +9,19 @@
 <body>
   <h1>時間割BOT</h1>
   <div id="timetable">
-    <h2>時間割</h2>
     <div>
-      <h3>日付</h3>
+      <label>日付<label>
       <input type="date" v-model="date">
     </div>
-    <table>
-      <tr v-for="(subject, index) in timetable.subjects">
-        <td>{{ index+1 }}</td>
-        <td>{{ subject }}</td>
-      </tr>
-    </table>
+    <div>
+      <h3>時間割</h3>
+      <table>
+        <tr v-for="(subject, index) in timetable.subjects">
+          <td>{{ index+1 }}</td>
+          <td>{{ subject }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
