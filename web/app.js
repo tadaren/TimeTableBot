@@ -1,12 +1,18 @@
 const vm = new Vue({
     el: '#timetable',
     data: {
+        date: '',
         timetable: {}
     },
     mounted(){
         let today = new Date();
         let todayString = today.toISOString().substr(0, 10);
-        this.getTimetable(todayString);
+        this.date = todayString;
+    },
+    watch: {
+        date: function(newDate){
+            this.getTimetable(newDate);
+        }
     },
     methods: {
         getTimetable(date) {

@@ -10,6 +10,10 @@
   <h1>時間割BOT</h1>
   <div id="timetable">
     <h2>時間割</h2>
+    <div>
+      <h3>日付</h3>
+      <input type="date" v-model="date">
+    </div>
     <table>
       <tr v-for="(subject, index) in timetable.subjects">
         <td>{{ index+1 }}</td>
@@ -17,6 +21,7 @@
       </tr>
     </table>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="app.js"></script>
