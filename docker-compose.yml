@@ -2,6 +2,8 @@ version: '3.3'
 services:
   bot_db:
     image: mongo
+    volumes:
+      - ./db/mongo:/data/db
     expose:
       - "27017"
 
