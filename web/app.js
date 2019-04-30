@@ -33,7 +33,7 @@ const vm = new Vue({
         getTasks(date) {
             let param = {
                 first_day: date,
-                end_day: date,
+                last_day: date,
             };
             axios.get('/api/task/get', param).then(response => {
                 console.log(response);
