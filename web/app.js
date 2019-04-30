@@ -9,12 +9,16 @@ const vm = new Vue({
         subject: '',
         detail: '',
         tags: '',
+        event_date: '',
+        event_name: '',
+        event_tags: '',
     },
     mounted(){
         let today = new Date();
         let todayString = today.toISOString().substr(0, 10);
         this.date = todayString;
         this.deadline = todayString;
+        this.event_date = todayString;
     },
     watch: {
         date: function(newDate){
@@ -64,6 +68,14 @@ const vm = new Vue({
                 'tags': []
             };
             axios.post('/api/task/add', param);
+        },
+        addEvent(){
+            let param = {
+                'date': this.event_date,
+                'name': this.event_name,
+                'tags': [],
+            };
+            axios.post('/api/event/add', param);
         },
     }
 })
