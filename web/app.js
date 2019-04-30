@@ -4,6 +4,7 @@ const vm = new Vue({
         date: '',
         timetable: {},
         tasks: [],
+        events: [],
         deadline: '',
         subject: '',
         detail: '',
@@ -19,6 +20,7 @@ const vm = new Vue({
         date: function(newDate){
             this.getTimetable(newDate);
             this.getTasks(newDate);
+            this.getEvents(newDate);
         }
     },
     methods: {
@@ -38,6 +40,18 @@ const vm = new Vue({
             axios.get('/api/task/get', param).then(response => {
                 console.log(response);
                 this.tasks = response.data.response;
+            }).catch(error => {
+                console.error(error);
+            })
+        },
+        getEvents(date) {
+            let param = {
+                first_day: date,
+                last_day: date,
+            };
+            axios.get('/api/event/get', param).then(response => {
+                console.log(response);
+                this.events = response.data.events;
             }).catch(error => {
                 console.error(error);
             })
