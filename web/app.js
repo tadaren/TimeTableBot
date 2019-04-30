@@ -3,6 +3,8 @@ const vm = new Vue({
     data: {
         date: '',
         timetable: {}
+        timetable: {},
+        tasks: [],
     },
     mounted(){
         let today = new Date();
@@ -12,6 +14,7 @@ const vm = new Vue({
     watch: {
         date: function(newDate){
             this.getTimetable(newDate);
+            this.getTasks(newDate);
         }
     },
     methods: {
@@ -21,6 +24,22 @@ const vm = new Vue({
                 this.timetable = response.data;
             }).catch(
             )
+            }).catch(error => {
+                console.error(error);
+            })
+        },
+        getTasks(date) {
+            let param = {
+                first_day: date,
+                end_day: date,
+            };
+            axios.get('/api/task/get', param).then(response => {
+                console.log(response);
+                this.tasks = response.data.response;
+            }).catch(error => {
+                console.error(error);
+            })
+        },
         }
     }
 })

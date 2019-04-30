@@ -22,6 +22,15 @@
         </tr>
       </table>
     </div>
+    <div>
+      <h3>課題</h3>
+      <ul>
+        <li v-for="task in tasks">
+          <h4>{{ task.subject }}</h4>
+          <p>{{ task.detail }}</p>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
