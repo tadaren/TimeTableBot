@@ -4,6 +4,7 @@ import datetime
 import config
 from db import get_db
 from domain.task import task2dict
+from domain.event import event2dict
 from domain.timetable import timetable2dict
 from repository.eventrepository import EventRepository
 from repository.taskrepository import TaskRepository
@@ -74,6 +75,24 @@ def add_task():
         datetime.date.fromisoformat(request_json['deadline']),
         request_json['tags']
     )
+
+
+@get('/event/get')
+def event_get():
+    first_day = request.query.get('first_day')
+    last_day = request.query.get('last_day')
+    tags = request.query.getall('tags')
+    if first_day is not None:
+        first_day = datetime.date.fromisoformat(first_day)
+    if last_day is not None:
+        last_day = datetime.date.fromisoformat(last_day)
+
+    events = event_manager.get(first_day, last_day, tags)
+
+    response.headers['Content-Type'] = 'application/json'
+    if not events:
+        return {}
+    return {'events': [event2dict(event) for event in events]}
 
 
 run(host=config.HOST, port=config.PORT, debug=True, reloader=True)

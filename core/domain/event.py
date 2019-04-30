@@ -8,3 +8,12 @@ class Event:
     name: str
     date: date
     tags: list
+
+
+def event2dict(event: Event):
+    return {
+        'id': str(event.event_id),
+        'name': event.name,
+        'date': event.date.isoformat(),
+        'tags': event.tags
+    }
