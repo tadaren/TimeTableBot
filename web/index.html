@@ -31,6 +31,24 @@
         </li>
       </ul>
     </div>
+    <div>
+      <h3>課題登録</h3>
+      <form @submit.prevent="addTask">
+        <label>
+          提出日<input type="date" name="deadline" v-model="deadline">
+        </label>
+        <label>
+          教科<input type="text" name="subject" v-model="subject">
+        </label>
+        <label>
+          詳細<input type="text" name="detail" v-model="detail">
+        </label>
+        <label>
+          タグ<input type="text" name="tags" v-model="tags">
+        </label>
+        <button type="submit">登録</button>
+      </form>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>

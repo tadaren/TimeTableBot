@@ -2,14 +2,18 @@ const vm = new Vue({
     el: '#timetable',
     data: {
         date: '',
-        timetable: {}
         timetable: {},
         tasks: [],
+        deadline: '',
+        subject: '',
+        detail: '',
+        tags: '',
     },
     mounted(){
         let today = new Date();
         let todayString = today.toISOString().substr(0, 10);
         this.date = todayString;
+        this.deadline = todayString;
     },
     watch: {
         date: function(newDate){
@@ -22,8 +26,6 @@ const vm = new Vue({
             axios.get('/api/timetable/get?date='+date).then(response => {
                 console.log(response);
                 this.timetable = response.data;
-            }).catch(
-            )
             }).catch(error => {
                 console.error(error);
             })
@@ -40,6 +42,14 @@ const vm = new Vue({
                 console.error(error);
             })
         },
-        }
+        addTask(){
+            let param = {
+                'deadline': this.deadline,
+                'subject': this.subject,
+                'detail': this.detail,
+                'tags': []
+            };
+            axios.post('/api/task/add', param);
+        },
     }
 })
