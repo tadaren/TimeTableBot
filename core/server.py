@@ -95,4 +95,14 @@ def event_get():
     return {'events': [event2dict(event) for event in events]}
 
 
+@post('/event/add')
+def add_event():
+    request_json = request.json
+    event_manager.add(
+        request_json['name'],
+        datetime.date.fromisoformat(request_json['date']),
+        request_json['tags']
+    )
+
+
 run(host=config.HOST, port=config.PORT, debug=True, reloader=True)
