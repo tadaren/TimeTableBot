@@ -15,6 +15,7 @@ const vm = new Vue({
     },
     mounted(){
         let today = new Date();
+        today.setHours(today.getHours()+9);
         let todayString = today.toISOString().substr(0, 10);
         this.date = todayString;
         this.deadline = todayString;
