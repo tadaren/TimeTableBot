@@ -57,21 +57,21 @@
         <button type="submit">登録</button>
       </form>
     </div>
-      <div>
-        <h3>イベント登録</h3>
-        <form @submit.prevent="addEvent">
-          <label>
-            日付<input type="date" name="event_date" v-model="event_date">
-          </label>
-          <label>
-            イベント名<input type="text" name="event_name" v-model="event_name">
-          </label>
-          <label>
-            タグ<input type="text" name="event_tags" v-model="event_tags">
-          </label>
-          <button type="submit">登録</button>
-        </form>
-      </div>
+    <div>
+      <h3>イベント登録</h3>
+      <form @submit.prevent="addEvent">
+        <label>
+          日付<input type="date" name="event_date" v-model="event_date">
+        </label>
+        <label>
+          イベント名<input type="text" name="event_name" v-model="event_name">
+        </label>
+        <label>
+          タグ<input type="text" name="event_tags" v-model="event_tags">
+        </label>
+        <button type="submit">登録</button>
+      </form>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
