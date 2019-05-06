@@ -39,8 +39,10 @@ const vm = new Vue({
         },
         getTasks(date) {
             let param = {
-                first_day: date,
-                last_day: date,
+                params: {
+                    first_day: date,
+                    last_day: date,
+                }
             };
             axios.get('/api/task/get', param).then(response => {
                 console.log(response);
@@ -51,8 +53,10 @@ const vm = new Vue({
         },
         getEvents(date) {
             let param = {
-                first_day: date,
-                last_day: date,
+                params: {
+                    first_day: date,
+                    last_day: date,
+                }
             };
             axios.get('/api/event/get', param).then(response => {
                 console.log(response);
