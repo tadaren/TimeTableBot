@@ -72,6 +72,24 @@
         <button type="submit">登録</button>
       </form>
     </div>
+    <div>
+      <h3>時間割変更登録</h3>
+      <form @submit.prevent="addTimeTableChange">
+        <label>
+          日付<input type="date" name="timetable_change_date" v-model="timetable_change_date">
+        </label>
+        <label><input type="checkbox" value="1" v-model="period">1</label>
+        <label><input type="checkbox" value="2" v-model="period">2</label>
+        <label><input type="checkbox" value="3" v-model="period">3</label>
+        <label><input type="checkbox" value="4" v-model="period">4</label>
+        <label><input type="checkbox" value="5" v-model="period">5</label>
+        <label><input type="checkbox" value="6" v-model="period">6</label>
+        <label><input type="checkbox" value="7" v-model="period">7</label>
+        <label><input type="checkbox" value="8" v-model="period">8</label>
+        <label>教科<input type="text" name="subject" v-model="change_subject"></label>
+        <button type="submit">登録</button>
+      </form>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>

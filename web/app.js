@@ -12,6 +12,9 @@ const vm = new Vue({
         event_date: '',
         event_name: '',
         event_tags: '',
+        timetable_change_date: '',
+        period: [],
+        change_subject: '',
     },
     mounted(){
         let today = new Date();
@@ -20,6 +23,7 @@ const vm = new Vue({
         this.date = todayString;
         this.deadline = todayString;
         this.event_date = todayString;
+        this.timetable_change_date = todayString;
     },
     watch: {
         date: function(newDate){
@@ -81,6 +85,17 @@ const vm = new Vue({
                 'tags': [],
             };
             axios.post('/api/event/add', param);
+        },
+        addTimeTableChange() {
+            this.period.forEach(element => {
+                let param = {
+                    'date': this.timetable_change_date,
+                    'period': Number(element),
+                    'subject': this.change_subject,
+                    'tags': [],
+                }
+                axios.post('/api/timetable/change', param);
+            });
         },
     }
 })
