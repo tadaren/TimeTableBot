@@ -2,7 +2,7 @@ const vm = new Vue({
     el: '#timetable',
     data: {
         date: '',
-        timetable: {},
+        timetable_obj: {change:[]},
         tasks: [],
         events: [],
         deadline: '',
@@ -25,6 +25,15 @@ const vm = new Vue({
         this.event_date = todayString;
         this.timetable_change_date = todayString;
     },
+    computed: {
+        timetable: function(){
+            let timetable = this.timetable_obj.subjects;
+            this.timetable_obj.change.forEach(e =>{
+                timetable[e.period-1] = e.subject
+            })
+            return timetable;
+        }
+    },
     watch: {
         date: function(newDate){
             this.getTimetable(newDate);
@@ -36,7 +45,7 @@ const vm = new Vue({
         getTimetable(date) {
             axios.get('/api/timetable/get?date='+date).then(response => {
                 console.log(response);
-                this.timetable = response.data;
+                this.timetable_obj = response.data;
             }).catch(error => {
                 console.error(error);
             })
