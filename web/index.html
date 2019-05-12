@@ -51,9 +51,15 @@
         <label>
           詳細<input type="text" name="detail" v-model="detail">
         </label>
-        <label>
-          タグ<input type="text" name="tags" v-model="tags">
-        </label>
+        <div>
+          <label>タグ</label>
+          <span v-for="task_tag in task_tags">
+            <input type="text" name="tags" v-model="task_tag.value" @keydown.self.prevent.enter>
+          </span>
+          <button @click="addTaskTag">
+            タグ追加
+          </button>
+        </div>
         <button type="submit">登録</button>
       </form>
     </div>
