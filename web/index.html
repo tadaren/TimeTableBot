@@ -15,12 +15,13 @@
     </div>
     <div>
       <h3>時間割</h3>
-      <table>
+      <table v-if="timetable_obj.subject">
         <tr v-for="(subject, index) in timetable">
           <td>{{ index+1 }}</td>
           <td>{{ subject }}</td>
         </tr>
       </table>
+      <p v-else>なし</p>
     </div>
     <div>
       <h3>課題</h3>
