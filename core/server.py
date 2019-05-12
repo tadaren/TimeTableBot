@@ -77,6 +77,12 @@ def add_task():
     )
 
 
+@post('/task/delete')
+def delete_task():
+    request_json = request.json
+    task_manager.delete(request_json['id'])
+
+
 @get('/event/get')
 def event_get():
     first_day = request.query.get('first_day')
