@@ -111,4 +111,10 @@ def add_event():
     )
 
 
+@post('/event/delete')
+def delete_event():
+    request_json = request.json
+    event_manager.delete(request_json['id'])
+
+
 run(host=config.HOST, port=config.PORT, debug=True, reloader=True)
