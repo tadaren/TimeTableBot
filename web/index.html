@@ -73,9 +73,15 @@
         <label>
           イベント名<input type="text" name="event_name" v-model="event_name">
         </label>
-        <label>
-          タグ<input type="text" name="event_tags" v-model="event_tags">
-        </label>
+        <div>
+          <label>タグ</label>
+          <span v-for="event_tag in event_tags">
+            <input type="text" v-model="event_tag.value" @keydown.self.prevent.enter>
+          </span>
+          <button @click="addEventTag">
+            タグ追加
+          </button>
+        </div>
         <button type="submit">登録</button>
       </form>
     </div>

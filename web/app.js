@@ -11,7 +11,7 @@ const vm = new Vue({
         task_tags: [],
         event_date: '',
         event_name: '',
-        event_tags: '',
+        event_tags: [],
         timetable_change_date: '',
         period: [],
         change_subject: '',
@@ -44,6 +44,9 @@ const vm = new Vue({
     methods: {
         addTaskTag() {
             this.task_tags.push({value: ''});
+        },
+        addEventTag() {
+            this.event_tags.push({value:''});
         },
         getTimetable(date) {
             axios.get('/api/timetable/get?date='+date).then(response => {
@@ -101,6 +104,11 @@ const vm = new Vue({
                 'name': this.event_name,
                 'tags': [],
             };
+            this.event_tags.forEach(event_tag => {
+                if(event_tag.value !== ''){
+                    param.tags.push(event_tag.value);
+                }
+            });
             axios.post('/api/event/add', param);
         },
         addTimeTableChange() {
