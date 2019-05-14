@@ -28,6 +28,9 @@ const vm = new Vue({
     computed: {
         timetable: function(){
             let timetable = this.timetable_obj.subjects;
+            if(timetable === undefined){
+                return;
+            }
             this.timetable_obj.change.forEach(e =>{
                 timetable[e.period-1] = e.subject
             })
